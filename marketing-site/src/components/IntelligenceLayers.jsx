@@ -182,46 +182,65 @@ export default function IntelligenceLayers() {
         </div>
       </SnapSlide>
 
-      {/* Slide 3: Batch Analysis (7-8) */}
+      {/* Slide 3: Batch Analysis + Designed */}
       <SnapSlide>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '24px' }}>
-          <FeatureCard id="07" label="[Batch Analysis]" title="Anomaly Detection (CUSUM)" style={{ gridColumn: 'span 6' }} tags={['Statistical Process Control', 'Offline']}>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              <strong>Computed from historical data:</strong> We ran a CUSUM control chart against the 298k row dataset to flag H3 cells where the cumulative sum of violations deviates significantly from the 8-12 week baseline.
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+          
+          {/* Tier 2 */}
+          <div>
+            <div className="section-header" style={{ fontFamily: 'Space Grotesk', fontWeight: 600, color: 'var(--accent-blue)', letterSpacing: '2px', fontSize: '14px', marginBottom: '8px', textTransform: 'uppercase' }}>
+              TIER 2 · ONE-TIME ANALYSIS
+            </div>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '24px' }}>
+              Run once against the real 298K-row dataset — a real finding, not a live recompute.
             </p>
-          </FeatureCard>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '24px' }}>
+              <FeatureCard id="07" label="[Batch Analysis]" title="Anomaly Detection (CUSUM)" style={{ gridColumn: 'span 6', padding: '32px' }} tags={['Statistical Process Control', 'Offline']}>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
+                  <strong>Computed from historical data:</strong> We ran a CUSUM control chart against the 298k row dataset to flag H3 cells where the cumulative sum of violations deviates significantly from the 8-12 week baseline.
+                </p>
+              </FeatureCard>
 
-          <FeatureCard id="08" label="[Batch Analysis]" title="Cascade Prediction" style={{ gridColumn: 'span 6' }} tags={['Temporal Correlation', 'Offline']}>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              <strong>Computed from historical data:</strong> Sliding-window seed/follower detection. Identifying which highly-congested cells historically act as triggers for adjacent cell congestion.
-            </p>
-          </FeatureCard>
-        </div>
-      </SnapSlide>
+              <FeatureCard id="08" label="[Batch Analysis]" title="Cascade Prediction" style={{ gridColumn: 'span 6', padding: '32px' }} tags={['Temporal Correlation', 'Offline']}>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
+                  <strong>Computed from historical data:</strong> Sliding-window seed/follower detection. Identifying which highly-congested cells historically act as triggers for adjacent cell congestion.
+                </p>
+              </FeatureCard>
+            </div>
+          </div>
 
-      {/* Slide 4: Designed (9-11) */}
-      <SnapSlide>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '24px' }}>
-          <FeatureCard id="09" label="[Designed]" title="Predictive Deployment" style={{ gridColumn: 'span 4' }} tags={['Architecture']}>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
-              <strong>Methodology:</strong> Time-series forecasting (LSTM) to predict where hotspots will shift in the next 2 hours.<br/><br/>
-              <strong>Missing Dependency:</strong> A trained, validated model iterating over months of seasonal data (weather, holidays) to prevent false positives.
+          {/* Tier 3 */}
+          <div>
+            <div className="section-header" style={{ fontFamily: 'Space Grotesk', fontWeight: 600, color: 'var(--accent-blue)', letterSpacing: '2px', fontSize: '14px', marginBottom: '8px', textTransform: 'uppercase' }}>
+              TIER 3 · DESIGNED
+            </div>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '16px', marginBottom: '24px' }}>
+              Not built. Here's exactly what's missing and why.
             </p>
-          </FeatureCard>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '24px' }}>
+              <FeatureCard id="09" label="[Designed]" title="Predictive Deployment" style={{ gridColumn: 'span 4', padding: '32px' }} tags={['Architecture']}>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
+                  <strong>Methodology:</strong> Time-series forecasting (LSTM) to predict where hotspots will shift in the next 2 hours.<br/><br/>
+                  <strong>Missing Dependency:</strong> A trained, validated model iterating over months of seasonal data (weather, holidays) to prevent false positives.
+                </p>
+              </FeatureCard>
 
-          <FeatureCard id="10" label="[Designed]" title="Impact Simulation" style={{ gridColumn: 'span 4' }} tags={['Architecture']}>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
-              <strong>Methodology:</strong> Simulating traffic redistribution when a chokepoint is closed.<br/><br/>
-              <strong>Missing Dependency:</strong> A dynamic traffic routing engine (like SUMO) and live Origin-Destination (OD) flow data.
-            </p>
-          </FeatureCard>
+              <FeatureCard id="10" label="[Designed]" title="Impact Simulation" style={{ gridColumn: 'span 4', padding: '32px' }} tags={['Architecture']}>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
+                  <strong>Methodology:</strong> Simulating traffic redistribution when a chokepoint is closed.<br/><br/>
+                  <strong>Missing Dependency:</strong> A dynamic traffic routing engine (like SUMO) and live Origin-Destination (OD) flow data.
+                </p>
+              </FeatureCard>
 
-          <FeatureCard id="11" label="[Designed]" title="Civic Integration" style={{ gridColumn: 'span 4' }} tags={['Architecture']}>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
-              <strong>Methodology:</strong> Live dispatch of police officers to critical chokepoints using VRP.<br/><br/>
-              <strong>Missing Dependency:</strong> Live GPS telemetry from police patrol cars.
-            </p>
-          </FeatureCard>
+              <FeatureCard id="11" label="[Designed]" title="Civic Integration" style={{ gridColumn: 'span 4', padding: '32px' }} tags={['Architecture']}>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
+                  <strong>Methodology:</strong> Live dispatch of police officers to critical chokepoints using VRP.<br/><br/>
+                  <strong>Missing Dependency:</strong> Live GPS telemetry from police patrol cars.
+                </p>
+              </FeatureCard>
+            </div>
+          </div>
+
         </div>
       </SnapSlide>
 
