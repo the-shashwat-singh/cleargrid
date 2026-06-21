@@ -59,7 +59,10 @@ export default function MarketingPage() {
       </nav>
 
       <div style={{ paddingTop: '100px' }}>
-        <SectionWrapper cardStyle={{ minHeight: 'calc(100vh - 140px)' }}>
+        <SectionWrapper 
+          containerStyle={{ paddingTop: '40px', minHeight: 'calc(100vh - 100px)' }}
+          cardStyle={{ minHeight: 'calc(100vh - 180px)' }}
+        >
           <Hero />
         </SectionWrapper>
         

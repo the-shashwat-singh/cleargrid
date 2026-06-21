@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function SectionWrapper({ children, cardStyle }) {
+export default function SectionWrapper({ children, cardStyle, containerStyle }) {
   const containerRef = useRef(null);
   const cardRef = useRef(null);
 
@@ -40,7 +40,8 @@ export default function SectionWrapper({ children, cardStyle }) {
         padding: '120px 40px 40px 40px',
         boxSizing: 'border-box',
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        ...containerStyle
       }}
     >
       <div 
