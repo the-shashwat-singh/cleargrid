@@ -61,19 +61,6 @@ export default function ClosingCTA() {
           display: 'inline-block'
         }}>
           🏆 View Prototype
-        </a>
-        <button style={{
-          background: 'rgba(255, 255, 255, 0.4)',
-          border: '1px solid rgba(255, 255, 255, 0.8)',
-          color: 'var(--text-primary)',
-          padding: '16px 32px',
-          borderRadius: '12px',
-          fontWeight: 600,
-          cursor: 'pointer',
-          fontSize: '16px'
-        }}>
-          👋 Meet the Team
-        </button>
       </div>
 
       <div style={{ 
