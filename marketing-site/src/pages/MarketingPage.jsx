@@ -72,7 +72,7 @@ export default function MarketingPage() {
           </SectionWrapper>
         </div>
 
-        <section id="features" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+        <section id="features" className="snap-section" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
           <IntelligenceLayers />
         </section>
 

@@ -32,6 +32,7 @@ export default function SectionWrapper({ children, cardStyle, containerStyle }) 
   return (
     <section 
       ref={containerRef} 
+      className="snap-section"
       style={{ 
         width: '100%', 
         minHeight: '100vh',
