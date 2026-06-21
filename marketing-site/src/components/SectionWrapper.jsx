@@ -10,13 +10,16 @@ export default function SectionWrapper({ children, cardStyle, containerStyle }) 
   const cardRef = useRef(null);
 
   useGSAP(() => {
-    // Apply perspective directly to the transform property via GSAP,
-    // rather than putting CSS perspective on the parent container.
+    // Apply perspective directly to the transform property via GSAP
     gsap.set(cardRef.current, { transformPerspective: 1200 });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return; // Skip animation if reduced motion is requested
 
     gsap.to(cardRef.current, {
       scrollTrigger: {
         trigger: containerRef.current,
+        scroller: '#snap-container', // MUST EXPLICITLY TARGET THE SNAP CONTAINER
         start: 'top top',
         end: 'bottom top',
         scrub: true,
@@ -32,7 +35,6 @@ export default function SectionWrapper({ children, cardStyle, containerStyle }) 
   return (
     <section 
       ref={containerRef} 
-      className="snap-section"
       style={{ 
         width: '100%', 
         minHeight: '100vh',

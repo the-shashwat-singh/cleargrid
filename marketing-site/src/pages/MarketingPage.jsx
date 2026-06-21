@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SectionWrapper from '../components/SectionWrapper';
 import Hero from '../components/Hero';
@@ -11,8 +11,44 @@ import DashboardPreview from '../components/DashboardPreview';
 import ClosingCTA from '../components/ClosingCTA';
 
 export default function MarketingPage() {
+  const snapContainerRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const container = snapContainerRef.current;
+      if (!container) return;
+      
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const behavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        container.scrollBy({ top: container.clientHeight, behavior });
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        container.scrollBy({ top: -container.clientHeight, behavior });
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    const container = snapContainerRef.current;
+    const target = document.getElementById(targetId);
+    if (container && target) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const behavior = prefersReducedMotion ? 'auto' : 'smooth';
+      const containerTop = container.getBoundingClientRect().top;
+      const targetTop = target.getBoundingClientRect().top;
+      container.scrollBy({ top: targetTop - containerTop, behavior });
+    }
+  };
+
   return (
-    <div style={{ position: 'relative', overflowX: 'hidden' }}>
+    <div style={{ position: 'relative', overflowX: 'hidden', height: '100dvh', overflowY: 'hidden' }}>
       <HorizonSVG />
       
       {/* Shared Navbar */}
@@ -40,9 +76,9 @@ export default function MarketingPage() {
           </span>
         </div>
         <div style={{ display: 'flex', gap: '32px', color: 'var(--text-secondary)' }}>
-          <a href="#features" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 500 }}>Features</a>
-          <a href="#how-it-works" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 500 }}>How It Works</a>
-          <a href="#for-officers" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 500 }}>For Officers</a>
+          <a href="#features" onClick={(e) => handleNavClick(e, 'features')} style={{ textDecoration: 'none', color: 'inherit', fontWeight: 500 }}>Features</a>
+          <a href="#how-it-works" onClick={(e) => handleNavClick(e, 'how-it-works')} style={{ textDecoration: 'none', color: 'inherit', fontWeight: 500 }}>How It Works</a>
+          <a href="#for-officers" onClick={(e) => handleNavClick(e, 'for-officers')} style={{ textDecoration: 'none', color: 'inherit', fontWeight: 500 }}>For Officers</a>
         </div>
         <a href="/dashboard" style={{
           background: 'transparent',
@@ -58,43 +94,59 @@ export default function MarketingPage() {
         </a>
       </nav>
 
-      <div>
-        <SectionWrapper 
-          containerStyle={{ paddingTop: '110px', paddingBottom: '30px', minHeight: '100vh' }}
-          cardStyle={{ minHeight: '85vh', maxHeight: '88vh' }}
-        >
-          <Hero />
-        </SectionWrapper>
+      <div 
+        id="snap-container"
+        ref={snapContainerRef}
+        style={{
+          height: '100dvh',
+          overflowY: 'scroll',
+          overflowX: 'hidden',
+          scrollSnapType: 'y mandatory',
+          overscrollBehaviorY: 'none' // Prevent bounce on Mac/iOS
+        }}
+      >
+        <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+          <SectionWrapper 
+            containerStyle={{ paddingTop: '110px', paddingBottom: '30px', minHeight: '100dvh' }}
+            cardStyle={{ minHeight: '85vh', maxHeight: '88vh' }}
+          >
+            <Hero />
+          </SectionWrapper>
+        </div>
         
-        <div style={{ marginTop: '100px' }}>
+        <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
           <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <CostOfChaos />
           </SectionWrapper>
         </div>
 
-        <section id="features" className="snap-section" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+        <section id="features" className="snap-section" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2, minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <IntelligenceLayers />
         </section>
 
-        <div id="for-officers">
+        <div id="for-officers" className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
           <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <DualAudience />
           </SectionWrapper>
         </div>
 
-        <div id="how-it-works">
+        <div id="how-it-works" className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
           <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <Pipeline />
           </SectionWrapper>
         </div>
 
-        <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <DashboardPreview />
-        </SectionWrapper>
+        <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
+          <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <DashboardPreview />
+          </SectionWrapper>
+        </div>
 
-        <SectionWrapper cardStyle={{ minHeight: '100vh', padding: '0', background: 'transparent', border: 'none', boxShadow: 'none' }}>
-          <ClosingCTA />
-        </SectionWrapper>
+        <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
+          <SectionWrapper cardStyle={{ minHeight: '100vh', padding: '0', background: 'transparent', border: 'none', boxShadow: 'none' }}>
+            <ClosingCTA />
+          </SectionWrapper>
+        </div>
       </div>
     </div>
   );
