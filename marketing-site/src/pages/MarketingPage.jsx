@@ -69,7 +69,8 @@ export default function MarketingPage() {
         transform: 'translateX(-50%)',
         width: 'calc(100% - 80px)',
         maxWidth: '1400px',
-        zIndex: 100
+        zIndex: 100,
+        background: 'var(--bg-primary)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div className="pulse-ring-container" style={{ width: '20px', height: '20px' }}>
@@ -131,9 +132,8 @@ export default function MarketingPage() {
                 </SectionWrapper>
               </div>
 
-              <section id="features" className="snap-section" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2, minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <IntelligenceLayers />
-              </section>
+              {/* IntelligenceLayers now renders its own snap slides */}
+              <IntelligenceLayers />
 
               <div id="for-officers" className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
                 <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
