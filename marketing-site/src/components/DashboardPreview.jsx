@@ -158,12 +158,12 @@ export default function DashboardPreview() {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} style={{ padding: '80px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, color: 'var(--accent-blue)', letterSpacing: '2px', fontSize: '14px', marginBottom: '24px', textTransform: 'uppercase' }}>
+    <div ref={containerRef} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, color: 'var(--accent-blue)', letterSpacing: '2px', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
         Live Preview
       </div>
       
-      <h2 className="syne" style={{ fontSize: '48px', textAlign: 'center', marginBottom: '64px' }}>
+      <h2 className="syne" style={{ fontSize: '42px', textAlign: 'center', marginBottom: '32px' }}>
         The Dashboard Officers Actually Use
       </h2>
 
@@ -175,7 +175,7 @@ export default function DashboardPreview() {
         overflow: 'hidden',
         boxShadow: '0 20px 60px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8)',
         border: '1px solid rgba(255,255,255,0.5)',
-        marginBottom: '48px'
+        marginBottom: '32px'
       }}>
         {/* Browser Header */}
         <div style={{ 
@@ -209,7 +209,7 @@ export default function DashboardPreview() {
         </div>
 
         {/* Dashboard Content */}
-        <div style={{ display: 'flex', height: '540px', background: 'rgba(250,251,252,0.6)' }}>
+        <div style={{ display: 'flex', height: '480px', background: 'rgba(250,251,252,0.6)' }}>
           {/* Sidebar Tabs */}
           <div style={{ width: '280px', borderRight: '1px solid rgba(0,0,0,0.05)', padding: '24px 0', background: 'rgba(255,255,255,0.3)' }}>
             <div style={{ padding: '0 24px', marginBottom: '32px', fontWeight: 600, fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
