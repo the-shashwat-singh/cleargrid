@@ -61,6 +61,7 @@ export default function ClosingCTA() {
           display: 'inline-block'
         }}>
           🏆 View Prototype
+        </a>
       </div>
 
       <div style={{ 
