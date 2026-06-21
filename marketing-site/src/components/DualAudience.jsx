@@ -88,8 +88,6 @@ export default function DualAudience() {
             "I never know when Silk Board will be a nightmare because of one truck."
           </h3>
 
-          <p style={{ fontWeight: 600, marginBottom: '16px' }}>Now with ClearGrid:</p>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '16px' }}>
           <p style={{ fontWeight: 600, marginBottom: '12px', fontSize: '14px' }}>Now with ClearGrid:</p>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '14px' }}>
             <li style={{ marginBottom: '8px' }}><span style={{ color: 'var(--accent-green)', marginRight: '8px' }}>✓</span> Route risk score before you leave home</li>
