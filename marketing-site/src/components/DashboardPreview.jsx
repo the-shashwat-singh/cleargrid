@@ -209,7 +209,7 @@ export default function DashboardPreview() {
         </div>
 
         {/* Dashboard Content */}
-        <div style={{ display: 'flex', height: '600px', background: 'rgba(250,251,252,0.6)' }}>
+        <div style={{ display: 'flex', height: '540px', background: 'rgba(250,251,252,0.6)' }}>
           {/* Sidebar Tabs */}
           <div style={{ width: '280px', borderRight: '1px solid rgba(0,0,0,0.05)', padding: '24px 0', background: 'rgba(255,255,255,0.3)' }}>
             <div style={{ padding: '0 24px', marginBottom: '32px', fontWeight: 600, fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>

@@ -60,7 +60,7 @@ export default function MarketingPage() {
 
       <div>
         <SectionWrapper 
-          containerStyle={{ paddingTop: '90px', paddingBottom: '20px', minHeight: '100vh' }}
+          containerStyle={{ paddingTop: '110px', paddingBottom: '30px', minHeight: '100vh' }}
           cardStyle={{ minHeight: '85vh', maxHeight: '88vh' }}
         >
           <Hero />
@@ -88,7 +88,7 @@ export default function MarketingPage() {
           </SectionWrapper>
         </div>
 
-        <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <DashboardPreview />
         </SectionWrapper>
 
