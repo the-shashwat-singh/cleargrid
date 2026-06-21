@@ -15,7 +15,7 @@ export default function CostOfChaos() {
     if (!cardsRef.current[0]) return;
     
     gsap.fromTo(countersRef.current[0], { innerHTML: 0 }, {
-      innerHTML: 243,
+      innerHTML: 1000,
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[0],
@@ -26,19 +26,21 @@ export default function CostOfChaos() {
     });
 
     gsap.fromTo(countersRef.current[1], { innerHTML: 0 }, {
-      innerHTML: 4.2,
+      innerHTML: 2000,
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[1],
         scroller: scroller,
         start: 'top 85%',
       },
-      snap: { innerHTML: 0.1 }
+      snap: { innerHTML: 1 }
     });
 
-    gsap.fromTo(countersRef.current[2], { innerHTML: 0 }, {
-      innerHTML: 85,
-      duration: 2,
+    // Flash the 0 in red
+    gsap.to(countersRef.current[2], {
+      color: 'var(--accent-red)',
+      duration: 0.5,
+      repeat: 3,
       yoyo: true,
       scrollTrigger: {
         trigger: countersRef.current[2],
@@ -78,18 +80,18 @@ export default function CostOfChaos() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px', marginBottom: '80px' }}>
         <div>
           <div className="mono" style={{ fontSize: '56px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: 500 }}>
-            <span ref={el => countersRef.current[0] = el}>0</span>
+            ₹<span ref={el => countersRef.current[0] = el}>0</span>
           </div>
           <div style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.4 }}>
-            hours/year lost<br/>to congestion
+            standard fine for parking<br/>in a no-parking zone
           </div>
         </div>
         <div>
           <div className="mono" style={{ fontSize: '56px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: 500 }}>
-            ₹<span ref={el => countersRef.current[1] = el}>0</span>L Cr
+            ₹<span ref={el => countersRef.current[1] = el}>0</span>
           </div>
           <div style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.4 }}>
-            annual economic loss<br/>to Bengaluru traffic
+            penalty if vehicle is<br/>towed for obstruction
           </div>
         </div>
         <div>
