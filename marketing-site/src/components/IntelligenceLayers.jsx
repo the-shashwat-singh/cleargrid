@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollerContext } from '../pages/MarketingPage';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FeatureCard = ({ id, label, title, children, tags, style, fullWidth = false }) => {
   return (
@@ -44,8 +48,23 @@ const FeatureCard = ({ id, label, title, children, tags, style, fullWidth = fals
 
 export default function IntelligenceLayers() {
   const containerRef = useRef(null);
+  const scroller = React.useContext(ScrollerContext);
 
   useGSAP(() => {
+    // Header animation
+    gsap.fromTo('.section-header', { y: 30, opacity: 0 }, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: containerRef.current,
+        scroller: scroller,
+        start: 'top 80%',
+      }
+    });
+
+    // Feature cards staggered entrance
     const cards = gsap.utils.toArray('.feature-card');
     
     cards.forEach((card) => {
@@ -53,20 +72,20 @@ export default function IntelligenceLayers() {
         y: 0,
         opacity: 1,
         scale: 1,
-        duration: 0.8,
+        duration: 1,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: card,
-          scroller: '#snap-container',
+          scroller: scroller,
           start: 'top 85%',
         }
       });
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [scroller] });
 
   return (
     <div ref={containerRef} style={{ padding: '20px 0' }}>
-      <div style={{ fontFamily: 'Space Grotesk', fontWeight: 600, color: 'var(--accent-blue)', letterSpacing: '2px', fontSize: '14px', marginBottom: '24px', textTransform: 'uppercase' }}>
+      <div className="section-header" style={{ fontFamily: 'Space Grotesk', fontWeight: 600, color: 'var(--accent-blue)', letterSpacing: '2px', fontSize: '14px', marginBottom: '24px', textTransform: 'uppercase' }}>
         Intelligence Layers
       </div>
       

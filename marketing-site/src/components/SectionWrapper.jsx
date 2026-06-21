@@ -2,12 +2,14 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { ScrollerContext } from '../pages/MarketingPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SectionWrapper({ children, cardStyle, containerStyle }) {
   const containerRef = useRef(null);
   const cardRef = useRef(null);
+  const scroller = React.useContext(ScrollerContext);
 
   useGSAP(() => {
     // Apply perspective directly to the transform property via GSAP
@@ -19,7 +21,7 @@ export default function SectionWrapper({ children, cardStyle, containerStyle }) 
     gsap.to(cardRef.current, {
       scrollTrigger: {
         trigger: containerRef.current,
-        scroller: '#snap-container', // MUST EXPLICITLY TARGET THE SNAP CONTAINER
+        scroller: scroller,
         start: 'top top',
         end: 'bottom top',
         scrub: true,
@@ -30,7 +32,7 @@ export default function SectionWrapper({ children, cardStyle, containerStyle }) 
       ease: 'none',
       transformOrigin: 'top center',
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [scroller] });
 
   return (
     <section 

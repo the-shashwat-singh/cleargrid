@@ -1,36 +1,45 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollerContext } from '../pages/MarketingPage';
 
 export default function Pipeline() {
   const containerRef = useRef(null);
+  const scroller = React.useContext(ScrollerContext);
 
   useGSAP(() => {
+    // Animate the connection lines drawing
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        scroller: '#snap-container',
+        scroller: scroller,
         start: 'top 80%',
       }
     });
 
-    tl.fromTo('.pipeline-node', { y: 20, opacity: 0 }, {
+    // Main container fade in
+    tl.fromTo(containerRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+    
+    // Nodes staggering
+    const nodes = gsap.utils.toArray('.pipeline-node');
+    tl.fromTo(nodes, { y: 30, opacity: 0, scale: 0.9 }, {
       y: 0,
       opacity: 1,
-      stagger: 0.2,
+      scale: 1,
       duration: 0.8,
-      ease: 'power2.out'
-    }, 0);
+      stagger: 0.2,
+      ease: 'back.out(1.2)',
+    }, '-=0.2');
 
-    tl.fromTo('.pipeline-arrow', { opacity: 0, scaleX: 0, transformOrigin: 'left center' }, {
-      opacity: 1,
+    // Lines expanding
+    const lines = gsap.utils.toArray('.pipeline-line');
+    tl.fromTo(lines, { scaleX: 0 }, {
       scaleX: 1,
+      duration: 0.6,
       stagger: 0.2,
-      duration: 0.8,
-      ease: 'power2.out'
-    }, 0.2);
-
-  }, { scope: containerRef });
+      ease: 'power2.inOut',
+    }, '-=1'); // Overlap with nodes
+  }, { scope: containerRef, dependencies: [scroller] });
 
   const Node = ({ title, subtitle, items }) => (
     <div className="pipeline-node" style={{

@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { getMockData } from '../utils/mockFallback';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollerContext } from '../pages/MarketingPage';
 import { mappls } from 'mappls-web-maps';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ const mapplsClassObject = new mappls();
 export default function DashboardPreview() {
   const MAPPLS_KEY = import.meta.env.VITE_MAPPLS_API_KEY || "cleargrid_demo_key";
   const containerRef = useRef(null);
+  const scroller = useContext(ScrollerContext);
   const [activeTab, setActiveTab] = useState(0);
   const [hotspots, setHotspots] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -152,11 +154,11 @@ export default function DashboardPreview() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: containerRef.current,
-        scroller: '#snap-container',
+        scroller: scroller,
         start: 'top 80%',
       }
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [scroller] });
 
   return (
     <div ref={containerRef} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

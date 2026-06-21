@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, createContext } from 'react';
 import { Link } from 'react-router-dom';
 import SectionWrapper from '../components/SectionWrapper';
 import Hero from '../components/Hero';
@@ -10,9 +10,12 @@ import Pipeline from '../components/Pipeline';
 import DashboardPreview from '../components/DashboardPreview';
 import ClosingCTA from '../components/ClosingCTA';
 
+export const ScrollerContext = createContext(null);
+
 export default function MarketingPage() {
   const snapContainerRef = useRef(null);
   const [isMounted, setIsMounted] = React.useState(false);
+  const [scroller, setScroller] = useState(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -96,64 +99,71 @@ export default function MarketingPage() {
         </a>
       </nav>
 
-      <div 
-        id="snap-container"
-        ref={snapContainerRef}
-        style={{
-          height: '100dvh',
-          overflowY: 'scroll',
-          overflowX: 'hidden',
-          scrollSnapType: 'y mandatory',
-          overscrollBehaviorY: 'none' // Prevent bounce on Mac/iOS
-        }}
-      >
-        {isMounted && (
-          <>
-            <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
-              <SectionWrapper 
-                containerStyle={{ paddingTop: '110px', paddingBottom: '30px', minHeight: '100dvh' }}
-                cardStyle={{ minHeight: '85vh', maxHeight: '88vh' }}
-              >
-                <Hero />
-              </SectionWrapper>
-            </div>
-            
-            <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
-              <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <CostOfChaos />
-              </SectionWrapper>
-            </div>
+      <ScrollerContext.Provider value={scroller}>
+        <div 
+          id="snap-container"
+          ref={(node) => {
+            snapContainerRef.current = node;
+            if (node && !scroller) setScroller(node);
+          }}
+          style={{
+            height: '100dvh',
+            overflowY: 'scroll',
+            overflowX: 'hidden',
+            scrollSnapType: 'y mandatory',
+            overscrollBehaviorY: 'none' // Prevent bounce on Mac/iOS
+          }}
+        >
+          {scroller && (
+            <>
+              <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+                <SectionWrapper 
+                  containerStyle={{ paddingTop: '110px', paddingBottom: '30px', minHeight: '100dvh' }}
+                  cardStyle={{ minHeight: '85vh', maxHeight: '88vh' }}
+                >
+                  <Hero />
+                </SectionWrapper>
+              </div>
+              
+              {/*
+              <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
+                <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <CostOfChaos />
+                </SectionWrapper>
+              </div>
+              */}
 
-            <section id="features" className="snap-section" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2, minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <IntelligenceLayers />
-            </section>
+              <section id="features" className="snap-section" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2, minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <IntelligenceLayers />
+              </section>
 
-            <div id="for-officers" className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
-              <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <DualAudience />
-              </SectionWrapper>
-            </div>
+              <div id="for-officers" className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
+                <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <DualAudience />
+                </SectionWrapper>
+              </div>
 
-            <div id="how-it-works" className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
-              <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Pipeline />
-              </SectionWrapper>
-            </div>
+              <div id="how-it-works" className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
+                <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <Pipeline />
+                </SectionWrapper>
+              </div>
 
-            <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
-              <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <DashboardPreview />
-              </SectionWrapper>
-            </div>
+              <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
+                <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <DashboardPreview />
+                </SectionWrapper>
+              </div>
 
-            <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
-              <SectionWrapper cardStyle={{ minHeight: '100vh', padding: '0', background: 'transparent', border: 'none', boxShadow: 'none' }}>
-                <ClosingCTA />
-              </SectionWrapper>
-            </div>
-          </>
-        )}
-      </div>
+              <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
+                <SectionWrapper cardStyle={{ minHeight: '100vh', padding: '0', background: 'transparent', border: 'none', boxShadow: 'none' }}>
+                  <ClosingCTA />
+                </SectionWrapper>
+              </div>
+            </>
+          )}
+        </div>
+      </ScrollerContext.Provider>
     </div>
   );
 }

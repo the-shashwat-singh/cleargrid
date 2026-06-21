@@ -1,23 +1,39 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollerContext } from '../pages/MarketingPage';
 
 export default function DualAudience() {
   const containerRef = useRef(null);
+  const scroller = React.useContext(ScrollerContext);
 
   useGSAP(() => {
-    gsap.fromTo('.audience-panel', { y: 40, opacity: 0 }, {
-      y: 0,
+    // Fade in the container
+    gsap.fromTo(containerRef.current, { opacity: 0 }, {
       opacity: 1,
-      stagger: 0.2,
       duration: 1,
       scrollTrigger: {
         trigger: containerRef.current,
-        scroller: '#snap-container',
+        scroller: scroller,
         start: 'top 80%',
       }
     });
-  }, { scope: containerRef });
+
+    // Cards entrance animation
+    const cards = gsap.utils.toArray('.audience-panel');
+    gsap.fromTo(cards, { y: 60, opacity: 0 }, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: containerRef.current,
+        scroller: scroller,
+        start: 'top 70%',
+      }
+    });
+  }, { scope: containerRef, dependencies: [scroller] });
 
   return (
     <div ref={containerRef} style={{ padding: '0' }}>

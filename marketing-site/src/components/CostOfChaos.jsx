@@ -1,62 +1,66 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollerContext } from '../pages/MarketingPage';
 
 export default function CostOfChaos() {
   const containerRef = useRef(null);
-  const countersRef = useRef([]);
-  const cardsRef = useRef([]);
+  const countersRef = useRef([null, null, null]);
+  const cardsRef = useRef([null, null, null]);
+  const scroller = React.useContext(ScrollerContext);
 
   useGSAP(() => {
     // Number counting animations
+    if (!countersRef.current[0] || !countersRef.current[1] || !countersRef.current[2]) return;
+    if (!cardsRef.current[0]) return;
+    
     gsap.fromTo(countersRef.current[0], { innerHTML: 0 }, {
       innerHTML: 243,
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[0],
-        scroller: '#snap-container',
+        scroller: scroller,
         start: 'top 85%',
       },
       snap: { innerHTML: 1 }
     });
 
     gsap.fromTo(countersRef.current[1], { innerHTML: 0 }, {
-      innerHTML: 1.5,
+      innerHTML: 4.2,
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[1],
-        scroller: '#snap-container',
+        scroller: scroller,
         start: 'top 85%',
       },
       snap: { innerHTML: 0.1 }
     });
 
-    // Flash the 0 in red
-    gsap.to(countersRef.current[2], {
-      color: 'var(--accent-red)',
-      duration: 0.5,
-      repeat: 3,
+    gsap.fromTo(countersRef.current[2], { innerHTML: 0 }, {
+      innerHTML: 85,
+      duration: 2,
       yoyo: true,
       scrollTrigger: {
         trigger: countersRef.current[2],
-        scroller: '#snap-container',
+        scroller: scroller,
         start: 'top 85%',
       }
     });
 
-    // Cards staggered reveal
+    // Cards staggered entrance
     gsap.fromTo(cardsRef.current, { y: 40, opacity: 0 }, {
       y: 0,
       opacity: 1,
-      stagger: 0.15,
+      duration: 0.8,
+      stagger: 0.2,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: cardsRef.current[0],
-        scroller: '#snap-container',
+        scroller: scroller,
         start: 'top 90%',
       }
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [scroller] });
 
   return (
     <div ref={containerRef} style={{ padding: '20px 0' }}>
