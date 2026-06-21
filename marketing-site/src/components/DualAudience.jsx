@@ -13,6 +13,7 @@ export default function DualAudience() {
       duration: 1,
       scrollTrigger: {
         trigger: containerRef.current,
+        scroller: '#snap-container',
         start: 'top 80%',
       }
     });

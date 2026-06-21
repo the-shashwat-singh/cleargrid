@@ -152,6 +152,7 @@ export default function DashboardPreview() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: containerRef.current,
+        scroller: '#snap-container',
         start: 'top 80%',
       }
     });

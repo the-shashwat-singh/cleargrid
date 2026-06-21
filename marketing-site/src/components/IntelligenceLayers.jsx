@@ -57,6 +57,7 @@ export default function IntelligenceLayers() {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: card,
+          scroller: '#snap-container',
           start: 'top 85%',
         }
       });

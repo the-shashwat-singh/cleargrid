@@ -9,6 +9,7 @@ export default function Pipeline() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
+        scroller: '#snap-container',
         start: 'top 80%',
       }
     });

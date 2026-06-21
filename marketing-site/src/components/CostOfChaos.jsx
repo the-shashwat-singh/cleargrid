@@ -14,6 +14,7 @@ export default function CostOfChaos() {
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[0],
+        scroller: '#snap-container',
         start: 'top 85%',
       },
       snap: { innerHTML: 1 }
@@ -24,6 +25,7 @@ export default function CostOfChaos() {
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[1],
+        scroller: '#snap-container',
         start: 'top 85%',
       },
       snap: { innerHTML: 0.1 }
@@ -37,6 +39,7 @@ export default function CostOfChaos() {
       yoyo: true,
       scrollTrigger: {
         trigger: countersRef.current[2],
+        scroller: '#snap-container',
         start: 'top 85%',
       }
     });
@@ -49,6 +52,7 @@ export default function CostOfChaos() {
       ease: 'power2.out',
       scrollTrigger: {
         trigger: cardsRef.current[0],
+        scroller: '#snap-container',
         start: 'top 90%',
       }
     });
