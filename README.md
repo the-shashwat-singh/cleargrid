@@ -5,6 +5,8 @@
   <p><strong>Stop Chasing Violations. Start Predicting Them.</strong></p>
   <p><i>An AI-powered operating system for intelligent parking enforcement. Built for the Flipkart Gridlock Hackathon.</i></p>
 
+  <h3>🌐 <a href="https://cleargrid-five.vercel.app/">Live Demo (Vercel)</a></h3>
+
   ---
 </div>
 
