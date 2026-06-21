@@ -15,7 +15,7 @@ export default function CostOfChaos() {
     if (!cardsRef.current[0]) return;
     
     gsap.fromTo(countersRef.current[0], { innerHTML: 0 }, {
-      innerHTML: 1000,
+      innerHTML: 298,
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[0],
@@ -26,14 +26,14 @@ export default function CostOfChaos() {
     });
 
     gsap.fromTo(countersRef.current[1], { innerHTML: 0 }, {
-      innerHTML: 2000,
+      innerHTML: 29.8,
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[1],
         scroller: scroller,
         start: 'top 85%',
       },
-      snap: { innerHTML: 1 }
+      snap: { innerHTML: 0.1 }
     });
 
     // Flash the 0 in red
@@ -80,18 +80,18 @@ export default function CostOfChaos() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px', marginBottom: '80px' }}>
         <div>
           <div className="mono" style={{ fontSize: '56px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: 500 }}>
-            ₹<span ref={el => countersRef.current[0] = el}>0</span>
+            <span ref={el => countersRef.current[0] = el}>0</span>K+
           </div>
           <div style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.4 }}>
-            standard fine for parking<br/>in a no-parking zone
+            un-enforced parking<br/>violations logged
           </div>
         </div>
         <div>
           <div className="mono" style={{ fontSize: '56px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: 500 }}>
-            ₹<span ref={el => countersRef.current[1] = el}>0</span>
+            ₹<span ref={el => countersRef.current[1] = el}>0</span> Cr
           </div>
           <div style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.4 }}>
-            penalty if vehicle is<br/>towed for obstruction
+            estimated revenue lost<br/>to missed enforcement
           </div>
         </div>
         <div>
