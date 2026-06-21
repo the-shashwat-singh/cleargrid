@@ -1,0 +1,74 @@
+{
+  "anomalies": [
+    {
+      "h3_cell": "89618925913ffff",
+      "baseline_mean_daily": 3.6,
+      "triggered_date": "2024-03-30 00:00:00",
+      "deviation_percentage": 1029.4,
+      "cusum_score": 34.84
+    },
+    {
+      "h3_cell": "8960145b4dbffff",
+      "baseline_mean_daily": 5.2,
+      "triggered_date": "2024-04-01 00:00:00",
+      "deviation_percentage": 773.0,
+      "cusum_score": 38.74
+    },
+    {
+      "h3_cell": "8960145b403ffff",
+      "baseline_mean_daily": 4.9,
+      "triggered_date": "2024-03-17 00:00:00",
+      "deviation_percentage": 760.9,
+      "cusum_score": 34.63
+    },
+    {
+      "h3_cell": "8960145a423ffff",
+      "baseline_mean_daily": 7.2,
+      "triggered_date": "2024-04-02 00:00:00",
+      "deviation_percentage": 756.2,
+      "cusum_score": 48.54
+    },
+    {
+      "h3_cell": "8961892e167ffff",
+      "baseline_mean_daily": 2.8,
+      "triggered_date": "2024-03-25 00:00:00",
+      "deviation_percentage": 745.5,
+      "cusum_score": 20.09
+    },
+    {
+      "h3_cell": "8961892cb43ffff",
+      "baseline_mean_daily": 6.0,
+      "triggered_date": "2024-04-08 00:00:00",
+      "deviation_percentage": 739.2,
+      "cusum_score": 40.8
+    },
+    {
+      "h3_cell": "8961892097bffff",
+      "baseline_mean_daily": 3.6,
+      "triggered_date": "2024-03-13 00:00:00",
+      "deviation_percentage": 709.7,
+      "cusum_score": 23.66
+    },
+    {
+      "h3_cell": "89618925863ffff",
+      "baseline_mean_daily": 2.6,
+      "triggered_date": "2024-03-31 00:00:00",
+      "deviation_percentage": 672.7,
+      "cusum_score": 19.77
+    },
+    {
+      "h3_cell": "8960145a6c7ffff",
+      "baseline_mean_daily": 2.9,
+      "triggered_date": "2024-04-05 00:00:00",
+      "deviation_percentage": 649.5,
+      "cusum_score": 17.53
+    },
+    {
+      "h3_cell": "8961892ec23ffff",
+      "baseline_mean_daily": 5.3,
+      "triggered_date": "2024-03-08 00:00:00",
+      "deviation_percentage": 629.1,
+      "cusum_score": 31.55
+    }
+  ]
+}

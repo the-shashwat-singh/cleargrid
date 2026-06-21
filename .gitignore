@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+venv/
+marketing-site/dist/
+
+# Extremely large files that exceed GitHub's 100MB limit
+demo_recorded.mov
+*.csv
+*.db

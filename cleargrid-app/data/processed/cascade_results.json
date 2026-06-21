@@ -1,0 +1,22 @@
+{
+  "cascades": [
+    {
+      "seed_cell": "8960145b5c7ffff",
+      "follower_cell": "8960145b547ffff",
+      "cascade_rate_pct": 78.4,
+      "median_time_to_cascade_mins": 45
+    },
+    {
+      "seed_cell": "8961892e9bbffff",
+      "follower_cell": "8961892e917ffff",
+      "cascade_rate_pct": 65.2,
+      "median_time_to_cascade_mins": 30
+    },
+    {
+      "seed_cell": "8960145a26bffff",
+      "follower_cell": "8960145b1b7ffff",
+      "cascade_rate_pct": 52.1,
+      "median_time_to_cascade_mins": 60
+    }
+  ]
+}
