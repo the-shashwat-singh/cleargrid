@@ -14,8 +14,8 @@ function ModelTelemetryCard() {
       borderRadius: '24px',
       width: 'fit-content',
       minWidth: '380px',
-      marginTop: '24px',
-      marginBottom: '32px'
+      marginTop: '16px',
+      marginBottom: '24px'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
         <Activity size={18} color="var(--accent-blue)" />
@@ -147,8 +147,8 @@ export default function Hero() {
       display: 'flex', 
       flexDirection: 'row', 
       height: '100%', // Fills the SectionWrapper's card
-      padding: '32px', 
-      gap: '40px',
+      padding: '24px', 
+      gap: '32px',
       overflow: 'hidden'
     }}>
       
@@ -168,7 +168,7 @@ export default function Hero() {
             &#127961;&#65039; Prototype Showcase
           </span>
           
-          <h1 className="syne" style={{ fontSize: '48px', lineHeight: '1.05', letterSpacing: '-0.03em', marginBottom: '16px' }}>
+          <h1 className="syne" style={{ fontSize: '42px', lineHeight: '1.05', letterSpacing: '-0.03em', marginBottom: '12px' }}>
             Stop Chasing Violations.
             <br />
             Start <span className="gradient-text">Predicting</span> Them.

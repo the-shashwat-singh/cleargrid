@@ -58,17 +58,19 @@ export default function MarketingPage() {
         </a>
       </nav>
 
-      <div style={{ paddingTop: '100px' }}>
+      <div>
         <SectionWrapper 
-          containerStyle={{ paddingTop: '40px', minHeight: 'calc(100vh - 100px)' }}
-          cardStyle={{ minHeight: 'calc(100vh - 180px)' }}
+          containerStyle={{ paddingTop: '90px', paddingBottom: '20px', minHeight: '100vh' }}
+          cardStyle={{ minHeight: '85vh', maxHeight: '88vh' }}
         >
           <Hero />
         </SectionWrapper>
         
-        <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <CostOfChaos />
-        </SectionWrapper>
+        <div style={{ marginTop: '100px' }}>
+          <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <CostOfChaos />
+          </SectionWrapper>
+        </div>
 
         <section id="features" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
           <IntelligenceLayers />
