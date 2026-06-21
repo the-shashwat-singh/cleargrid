@@ -26,14 +26,14 @@ export default function CostOfChaos() {
     });
 
     gsap.fromTo(countersRef.current[1], { innerHTML: 0 }, {
-      innerHTML: 29.8,
+      innerHTML: 20,
       duration: 2,
       scrollTrigger: {
         trigger: countersRef.current[1],
         scroller: scroller,
         start: 'top 85%',
       },
-      snap: { innerHTML: 0.1 }
+      snap: { innerHTML: 1 }
     });
 
     // Flash the 0 in red
@@ -88,10 +88,10 @@ export default function CostOfChaos() {
         </div>
         <div>
           <div className="mono" style={{ fontSize: '56px', color: 'var(--text-primary)', marginBottom: '8px', fontWeight: 500 }}>
-            ₹<span ref={el => countersRef.current[1] = el}>0</span> Cr
+            ₹<span ref={el => countersRef.current[1] = el}>0</span>K Cr
           </div>
           <div style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.4 }}>
-            estimated revenue lost<br/>to missed enforcement
+            annual economic loss<br/>to Bengaluru traffic
           </div>
         </div>
         <div>
