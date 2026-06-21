@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { getMockData } from '../utils/mockFallback';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { mappls } from 'mappls-web-maps';
@@ -40,9 +41,18 @@ export default function DashboardPreview() {
           } else {
             setHotspots(data[tKey] || []);
           }
+        } else {
+          throw new Error("API failed");
         }
       } catch (err) {
-        console.error("Failed to fetch from API", err);
+        console.warn("Failed to fetch from API, using mock fallback", err);
+        const data = getMockData(tabs[activeTab].endpoint);
+        const tKey = tabs[activeTab].key;
+        if (tKey === 'pipeline_health') {
+          setHotspots(data);
+        } else {
+          setHotspots(data[tKey] || []);
+        }
       } finally {
         setLoading(false);
       }

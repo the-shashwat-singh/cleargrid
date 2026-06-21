@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { getMockData } from '../utils/mockFallback';
 import { Link } from 'react-router-dom';
 import { mappls } from 'mappls-web-maps';
 import { ArrowLeft, Map as MapIcon, ShieldAlert, Clock, Car, IndianRupee, Activity, GitMerge, MoveRight, Route, Radio, AlertTriangle, Layers, Cpu, Server, Users, Stethoscope, Navigation } from 'lucide-react';
@@ -123,10 +124,16 @@ export default function Dashboard() {
         }
 
         if (layerConf.key !== 'pipeline_health') clearMarkers();
-        const res = await fetch(`http://localhost:8000${layerConf.endpoint}`);
-        if (!res.ok) throw new Error("API failed");
         
-        const json = await res.json();
+        let json;
+        try {
+          const res = await fetch(`http://localhost:8000${layerConf.endpoint}`);
+          if (!res.ok) throw new Error("API failed");
+          json = await res.json();
+        } catch (err) {
+          console.warn("API unavailable, falling back to mock data", err);
+          json = getMockData(layerConf.endpoint);
+        }
         
         if (layerConf.key === 'pipeline_health') {
             setData(json);
