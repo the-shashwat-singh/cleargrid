@@ -77,7 +77,7 @@ export default function MarketingPage() {
         </section>
 
         <div id="for-officers">
-          <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <DualAudience />
           </SectionWrapper>
         </div>
