@@ -125,13 +125,11 @@ export default function MarketingPage() {
                 </SectionWrapper>
               </div>
               
-              {/*
               <div className="snap-section" style={{ minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto' }}>
                 <SectionWrapper cardStyle={{ minHeight: '80vh', padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <CostOfChaos />
                 </SectionWrapper>
               </div>
-              */}
 
               <section id="features" className="snap-section" style={{ padding: '120px 40px', maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2, minHeight: '100dvh', scrollSnapAlign: 'start', scrollSnapStop: 'always', overflowY: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <IntelligenceLayers />
