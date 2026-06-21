@@ -84,7 +84,14 @@ npm run dev
 ```
 
 ## 🎥 Demo
-A full demo of the application is available in the repository. Please view `demo_recorded.mov` (note: due to file size, this may be hosted externally or require local playback).
+
+Click the image below to watch the full ClearGrid system in action!
+
+<div align="center">
+  <a href="https://youtu.be/ivnNxjdzhfg">
+    <img src="https://img.youtube.com/vi/ivnNxjdzhfg/maxresdefault.jpg" alt="ClearGrid Demo Video" width="80%">
+  </a>
+</div>
 
 ---
 <div align="center">
