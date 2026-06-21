@@ -15,7 +15,9 @@ Most systems show you where violations happened yesterday. **ClearGrid** tells y
 Powered by a massive dataset of 298,000 historical violations and the MapmyIndia API, ClearGrid acts as a complete pipeline that **Detects, Scores, Predicts, and Dispatches**. It replaces manual patrolling with data-driven predictive deployment.
 
 <div align="center">
-  <img src="screenshots/UI/pipeline.png" alt="ClearGrid Pipeline" width="80%" />
+  <img src="screenshots/UI/pipeline.png" alt="ClearGrid Pipeline UI" width="80%" />
+  <br/><br/>
+  <img src="screenshots/diagrams/The%204-Layer%20AI%20Pipeline%20Flowchart.png" alt="ClearGrid Pipeline Logic" width="80%" />
 </div>
 
 ## ✨ Key Features & Intelligence Layers
@@ -48,10 +50,18 @@ Sliding-window seed/follower detection. Identifying which highly-congested cells
 
 ## 🛠️ System Architecture
 
+<img src="screenshots/diagrams/System%20Architecture%20Diagram.png" width="100%" />
+<br/>
 - **Backend:** Python, FastAPI, DuckDB (for fast analytical querying on 300k+ rows)
 - **Geospatial & ML:** H3 (Hexagonal Hierarchical Spatial Index), scikit-learn (KMeans), OSMnx (Network topology), OSRM (Routing geometry)
 - **Frontend:** React, Vite, GSAP (Animations), Lucide Icons
 - **Mapping:** MapmyIndia API (mappls-web-maps)
+
+## 👮 Officer Workflow
+
+The platform provides a streamlined experience for enforcement officers in the field, creating a closed-loop feedback system that continuously updates the pipeline's health.
+
+<img src="screenshots/diagrams/Officer%20Action%20Flowchart.png" width="100%" />
 
 ## 💻 Running Locally
 
