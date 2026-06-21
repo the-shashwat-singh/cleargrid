@@ -30,6 +30,14 @@ ClearGrid uses a massive historical dataset of 298,000 parking violations to pre
 3.  **Predict:** Uses CUSUM (Anomaly Detection) and Cascade Prediction to forecast which hotspots will overflow next based on historical dwell times.
 4.  **Dispatch:** Generates optimal, turn-by-turn driving routes for patrol vehicles using the OSRM (Open Source Routing Machine) API.
 
+**Core Dashboard Features (Include these in the pitch):**
+1.  **Hotspot Intelligence:** Real-time visualization of violation density.
+2.  **Optimal Patrol Routing:** OSRM-powered turn-by-turn routes hitting maximum violations.
+3.  **Chokepoint Scoring:** OSMnx-powered scoring to prioritize structurally critical junctions.
+4.  **Dwell Time Analytics:** Identifying zones where quick drop-offs turn into chronic congestion.
+5.  **Anomaly Detection (CUSUM):** Flagging anomalous spikes in violations vs historical baselines.
+6.  **Cascade Prediction:** Forecasting how congestion spills over to adjacent hexagonal cells.
+
 **Business Impact & Revenue:**
 *   **Revenue Optimization:** By dispatching cops to dense violation clusters, the city captures massive amounts of uncollected revenue (calculated at a standard ₹500 fine per violation). 
 *   **Resource Efficiency:** The city doesn't need to hire *more* cops; it just makes the existing ones drastically more efficient by generating optimized patrol routes.
