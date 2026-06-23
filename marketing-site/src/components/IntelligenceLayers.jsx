@@ -53,21 +53,23 @@ export default function IntelligenceLayers() {
 
   useGSAP(() => {
     // Header animation
-    gsap.fromTo('.section-header', { y: 30, opacity: 0 }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.section-header',
-        scroller: scroller,
-        start: 'top 80%',
-      }
+    const headers = gsap.utils.toArray('.section-header');
+    headers.forEach(header => {
+      gsap.fromTo(header, { y: 30, opacity: 0 }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: header,
+          scroller: scroller,
+          start: 'top 80%',
+        }
+      });
     });
 
     // Feature cards staggered entrance
     const cards = gsap.utils.toArray('.feature-card');
-    
     cards.forEach((card) => {
       gsap.fromTo(card, { y: 80, opacity: 0, scale: 0.95 }, {
         y: 0,

@@ -12,6 +12,8 @@ export default function SectionWrapper({ children, cardStyle, containerStyle }) 
   const scroller = React.useContext(ScrollerContext);
 
   useGSAP(() => {
+    if (!cardRef.current || !containerRef.current) return;
+
     // Apply perspective directly to the transform property via GSAP
     gsap.set(cardRef.current, { transformPerspective: 1200 });
 
